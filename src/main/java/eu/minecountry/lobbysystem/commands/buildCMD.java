@@ -42,6 +42,7 @@ public class buildCMD extends BaseCommand {
 
             LobbyPlayer lobbyTarget = manager.getLobbyPlayer(target);
 
+
             if(lobbyTarget == lobbyPlayer){
                 lobbyPlayer.toggleBuilding();
                 if(lobbyPlayer.isBuilding()){
