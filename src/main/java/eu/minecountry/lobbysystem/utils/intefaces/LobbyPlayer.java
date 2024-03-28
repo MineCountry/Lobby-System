@@ -6,6 +6,7 @@ public interface LobbyPlayer {
 
     Player getBukkitPlayer();
     ItemsList updateItems();
+    InventoryList openInventory();
     void sendCustom(String message);
     void sendWarning(String message);
     void sendError(String message);

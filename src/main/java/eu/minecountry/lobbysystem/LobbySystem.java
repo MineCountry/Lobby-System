@@ -5,6 +5,7 @@ import eu.minecountry.lobbysystem.commands.buildCMD;
 import eu.minecountry.lobbysystem.commands.setCMD;
 import eu.minecountry.lobbysystem.commands.statusCMD;
 import eu.minecountry.lobbysystem.listener.*;
+import eu.minecountry.lobbysystem.listener.lobbyitems.Teleporter;
 import eu.minecountry.lobbysystem.utils.Manager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -25,6 +26,8 @@ public class LobbySystem extends JavaPlugin {
         loadConfig();
 
         manager = new Manager();
+
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
         loadCommands();
         loadListeners();
@@ -47,7 +50,8 @@ public class LobbySystem extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new MoveListener(), this);
         Bukkit.getPluginManager().registerEvents(new ProtectItems(), this);
-        Bukkit.getPluginManager().registerEvents(new ConnectionsListener(), this);
+        Bukkit.getPluginManager().registerEvents(new Teleporter(), this);
+        Bukkit.getPluginManager().registerEvents(new eu.minecountry.lobbysystem.listener.guis.Teleporter(), this);
     }
 
     private void loadConfig(){
@@ -62,6 +66,8 @@ public class LobbySystem extends JavaPlugin {
         getConfig().addDefault("rangetp.enabled", true);
         getConfig().addDefault("rangetp.locationname", "test");
         getConfig().addDefault("defaultgamemode", "ADVENTURE");
+        getConfig().addDefault("Descriptions.Spawn", null);
+        getConfig().addDefault("Descriptions.Citybuild", "<i><gray>Das ist eine Beschreibung</gray></i>");
         saveConfig();
     }
 
