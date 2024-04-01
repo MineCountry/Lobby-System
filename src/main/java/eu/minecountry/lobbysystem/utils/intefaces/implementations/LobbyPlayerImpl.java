@@ -1,6 +1,7 @@
 package eu.minecountry.lobbysystem.utils.intefaces.implementations;
 
 import eu.minecountry.lobbysystem.LobbySystem;
+import eu.minecountry.lobbysystem.utils.intefaces.InventoryList;
 import eu.minecountry.lobbysystem.utils.intefaces.ItemsList;
 import eu.minecountry.lobbysystem.utils.intefaces.LobbyPlayer;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -25,6 +26,11 @@ public class LobbyPlayerImpl implements LobbyPlayer {
     @Override
     public ItemsList updateItems() {
         return new ItemsListImpl(this);
+    }
+
+    @Override
+    public InventoryList openInventory() {
+        return new InventoryListImpl(this);
     }
 
     public void sendCustom(String message) {

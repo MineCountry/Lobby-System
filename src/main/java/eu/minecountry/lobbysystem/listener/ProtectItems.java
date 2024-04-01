@@ -28,6 +28,8 @@ public class ProtectItems implements Listener {
         if(!(event.getWhoClicked() instanceof Player))return;
         Player player = (Player) event.getWhoClicked();
 
+        if(event.getCurrentItem()==null)return;
+
         if(event.getCurrentItem().equals(LobbyItems.TELEPORTER.itemstack())){
             event.setCancelled(true);
         }
